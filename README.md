@@ -25,7 +25,9 @@ An OCSP server to check for real-time certificate revocation
 An LDAP server to provide authorization data for related certificates. Note this is usually a Microsoft Active Directory, but OpenLDAP is used for simplicity here
 
 # Instructions
-
+docker run --rm -it --mount type=bind,source=$(pwd)/root,target=/opt --mount type=bind,source=$(pwd)/app,target=/app --name oscp -p 2560:2560 oscp /bin/bash
+`/opt/create_ca.sh`
+`/opt/create_client.sh`
 # Notes
 https://www.cac.mil/Portals/53/Documents/CAC_NG_Implementation_Guide_v2.6.pdf
 https://devblogs.microsoft.com/scripting/building-a-demo-active-directory-part-1/
