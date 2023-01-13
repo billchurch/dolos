@@ -28,6 +28,10 @@ An LDAP server to provide authorization data for related certificates. Note this
 docker run --rm -it --mount type=bind,source=$(pwd)/root,target=/opt --mount type=bind,source=$(pwd)/app,target=/app --name oscp -p 2560:2560 oscp /bin/bash
 `/opt/create_ca.sh` - creates roots and sub cas 
 `/opt/create_client.sh` - creates an example client cert
+
+# To Do 
+- Generate client cert with parameters for subject, edipi, and a valid fascn using `fascn_decode.sh` as an example
+
 # Notes
 https://www.cac.mil/Portals/53/Documents/CAC_NG_Implementation_Guide_v2.6.pdf
 https://devblogs.microsoft.com/scripting/building-a-demo-active-directory-part-1/
