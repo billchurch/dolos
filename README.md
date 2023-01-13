@@ -4,17 +4,17 @@ Dolos is a collection of containers to support testing a system or service for a
 # Components
 ## Certificate Authorities
 ### DoDRoot3
-Modeled after DoD Root CA 3, RSA 2048 w/ SHA256 which is set to expire in the real-world on 20291230
+Modeled after DoD Root CA 3, RSA 2048 w/ SHA256 which is set to expire in the real-world on Dec 30 18:46:41 2029 GMT
 
 ### DoDRoot4
-Modeled after DoD Root CA 4, ecdsa-with-SHA256 prime256v1, which is set to expire in the real-world on 20320625
+Modeled after DoD Root CA 4, ecdsa-with-SHA256 prime256v1, which is set to expire in the real-world on Jul 25 19:48:23 2032 GMT
 
 ### DoDRoot5
-Modeled after DoD Root CA 5, ecdsa-with-SHA384 secp384r1, which is set to expire in the real-world on 20410614
+Modeled after DoD Root CA 5, ecdsa-with-SHA384 secp384r1, which is set to expire in the real-world on Jun 14 17:17:27 2041 GMT
 
 ## Subordinate CAs
 ### DOD ID CA-59
-Modled after DOD ID CA-59 and signed by DoDRoot3 RSA 2048 w/ SHA256, set to expire in the real-world on 20250402
+Modled after DOD ID CA-59 and signed by DoDRoot3 RSA 2048 w/ SHA256, set to expire in the real-world on Apr  2 13:38:32 2025 GMT
 
 Several subordinate CAs are created to represent a larger bundle of certificates that would likely need to be loaded on a system
 ## CRLDP
@@ -26,8 +26,8 @@ An LDAP server to provide authorization data for related certificates. Note this
 
 # Instructions
 docker run --rm -it --mount type=bind,source=$(pwd)/root,target=/opt --mount type=bind,source=$(pwd)/app,target=/app --name oscp -p 2560:2560 oscp /bin/bash
-`/opt/create_ca.sh`
-`/opt/create_client.sh`
+`/opt/create_ca.sh` - creates roots and sub cas 
+`/opt/create_client.sh` - creates an example client cert
 # Notes
 https://www.cac.mil/Portals/53/Documents/CAC_NG_Implementation_Guide_v2.6.pdf
 https://devblogs.microsoft.com/scripting/building-a-demo-active-directory-part-1/
