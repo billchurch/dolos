@@ -64,3 +64,22 @@ docker run --rm -it \
 ## Notes
 The OCSP responder (docker-entrypoint.sh) can be configured for any CA by modifying the CA variable. Default configuration watches CA-59's index.txt for changes and provides real-time certificate status responses. Currently the Dockerfile has this option commented out.
 
+## Screenshots
+
+- <img width="358" alt="Screenshot 2025-01-23 at 7 19 25 AM" src="https://github.com/user-attachments/assets/2b06a730-cb08-4c9c-87c4-ffa27b406ebf" />
+
+- <img width="307" alt="Screenshot 2025-01-23 at 7 17 05 AM" src="https://github.com/user-attachments/assets/dab6e664-b46d-41ec-9a20-92bd037c6ce3" />
+
+- <img width="302" alt="Screenshot 2025-01-23 at 7 17 10 AM" src="https://github.com/user-attachments/assets/fc916cb4-43cd-4306-99ff-0d345795b985" />
+
+- <img width="320" alt="Screenshot 2025-01-23 at 7 17 19 AM" src="https://github.com/user-attachments/assets/903f676b-e53a-4a32-a986-5d4d3d009c53" />
+
+- <img width="441" alt="Screenshot 2025-01-23 at 7 17 26 AM" src="https://github.com/user-attachments/assets/df58928d-9ad9-4705-be30-c5b6a0bf7a5e" />
+
+- <img width="468" alt="Screenshot 2025-01-23 at 7 17 34 AM" src="https://github.com/user-attachments/assets/029b5367-225d-4a23-9c8c-5e8aa2a35801" />
+
+- <img width="308" alt="Screenshot 2025-01-23 at 7 17 41 AM" src="https://github.com/user-attachments/assets/4ee999df-0df0-43ef-9aa4-d1ccf43b8272" />
+
+- <img width="313" alt="Screenshot 2025-01-23 at 7 17 48 AM" src="https://github.com/user-attachments/assets/a27da43b-e3b1-4c50-9196-53553cee591c" />
+
+- <img width="555" alt="Screenshot 2025-01-23 at 7 17 55 AM" src="https://github.com/user-attachments/assets/821c347b-7289-4457-b0ff-e9f8f69dc7b5" />
