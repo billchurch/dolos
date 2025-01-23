@@ -1,6 +1,7 @@
 # Dolos - DoD PKI Testing Environment
 
 ![dolos](images/dolos.png)
+
 Dolos provides a containerized environment for testing CAC authentication systems against a simulated DoD PKI infrastructure. It generates a complete certificate chain including root CAs, intermediate CAs, and client certificates that mimmics the actual DoD PKI structure for testing purposes.
 
 Note: This is a work in progress and the key-sizes may not represent the actual DoD PKI key sizes.
