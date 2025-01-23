@@ -82,6 +82,65 @@ function make_ca () {
 }
 
 
+# Original DoDRoot6.cer
+# Certificate:
+#   Data:
+#     Version: 3
+#       Serial Number: 0x01
+#       Signature Algorithm: SHA384withRSA - 1.2.840.113549.1.1.12
+#       Issuer: CN=DOD ROOT CA 6,OU=PKI,OU=DOD,O=U.S. GOVERNMENT,C=US
+#       Validity:
+#         Not Before: 2023-01-24 16:36:17 GMT
+#         Not  After: 2053-01-24 16:36:17 GMT
+#       Subject: CN=DOD ROOT CA 6,OU=PKI,OU=DOD,O=U.S. GOVERNMENT,C=US
+#       Subject Public Key Info:
+#         Algorithm: RSA - 1.2.840.113549.1.1.1
+#           Public Key:
+#             Exponent: 65537
+#             Public Key Modulus: ...
+#       Extensions:
+#         Identifier: Subject Key Identifier: - 2.5.29.14
+#           Critical: no
+#           Key Identifier:
+# 13:4F:3C:BB:DB:5D:45:29:A5:94:70:B6:DA:AC:9E:4C:E2:2F:C1:0B
+#         Identifier: Key Usage:
+#           digitalSignature
+#           keyCertSign
+#           cRLSign
+#         Identifier: Basic Constraints: - 2.5.29.19
+#           Critical: yes
+#           Is CA: yes
+#           Path Length Constraints: UNLIMITED
+#         Identifier: Policy Constraints: - 2.5.29.36
+#           Critical: unknown
+#           Require Explicit Policy:
+#           Inhibit Policy Mapping:
+#         Identifier: Authority Key Identifier: - 2.5.29.35
+#           Critical: unknown
+#           Key Identifier:
+#         Identifier: Certificate Policies: - 2.5.29.32
+#           Critical: unknown
+#           Value:
+#         Identifier: Issuer Alternative Name: - 2.5.29.18
+#           Critical: unknown
+#           Issuer Names:
+#         Identifier: CRLDistributionPoints: - 2.5.29.31
+#           Critical: unknown
+#           Value:
+#         Signature:
+#           Algorithm: SHA384withRSA - 1.2.840.113549.1.1.12
+#             Signature: ...
+CA=6
+SERIAL=1
+DAYS=10950
+FAKETIME='2023-01-24 16:36:17'
+ALGO="genrsa"
+CURVE="2048"
+SHA=384 
+EXTRAS="-addext keyUsage=keyCertSign,cRLSign -addext basicConstraints=critical,CA:true"
+
+make_ca
+
 # Original DoDRoot5.cer 
 # Certificate:
 #     Data:
@@ -364,6 +423,50 @@ FAKETIME='2021-06-01 14:11:23'
 ALGO="genrsa"
 CURVE="2048"
 SHA=256
+
+make_intermediate
+
+CA=70
+SIGNINGCA=6
+SERIAL=0047
+DAYS=2191
+FAKETIME='2023-05-16 16:00:08'
+ALGO="genrsa"
+CURVE="2048"
+SHA=384
+
+make_intermediate
+
+CA=71
+SIGNINGCA=6
+SERIAL=070C
+DAYS=2191
+FAKETIME='2022-12-06 17:12:15'
+ALGO="genrsa"
+CURVE="2048"
+SHA=256
+
+make_intermediate
+
+CA=72
+SIGNINGCA=6
+SERIAL=0048
+DAYS=2191
+FAKETIME='2023-05-16 16:02:26'
+ALGO="genrsa"
+CURVE="2048"
+SHA=384
+
+make_intermediate
+
+CA=73
+SIGNINGCA=6
+SERIAL=0049
+DAYS=2191
+FAKETIME='2023-05-16 16:03:49'
+ALGO="genrsa"
+CURVE="2048"
+SHA=384
 
 make_intermediate
 
