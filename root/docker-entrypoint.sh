@@ -13,13 +13,12 @@ sigint_handler()
 trap sigint_handler SIGINT
 
 while true; do
-    openssl ocsp -port 0.0.0.0:2560 -text -sha256 \
-        -index $ROOT/index.txt \
-#       -CA /root/ca/intermediate/certs/ca-chain.cert.pem \
-        -CA "$ROOT/certs/DoD ID CA-$CA.cert.pem" \
-        -rkey "$ROOT/private/DoD ID CA-$CA.key.pem" \
-        -rsigner "$ROOT/certs/DoD ID CA-$CA.cert.pem"
+    openssl ocsp -index "/app/CA-$CA/index.txt" -port 2560 \
+      -rkey "/app/private/DoD ID CA-$CA-ocsp.key.pem" \
+      -rsigner "/app/CA-$CA/certs/DoD ID CA-$CA-ocsp.cert.pem" \
+      -CA "/app/certs/DoD ID CA-$CA.cert.pem" \
+      -text
   PID=$!
-  inotifywait -e modify -e move -e create -e delete -e attrib -r /root/ca/intermediate/index.txt
+  inotifywait -e modify -e move -e create -e delete -e attrib -r "/app/CA-$CA/index.txt"
   kill $PID
 done

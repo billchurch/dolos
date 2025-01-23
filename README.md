@@ -25,7 +25,7 @@ An OCSP server to check for real-time certificate revocation
 An LDAP server to provide authorization data for related certificates. Note this is usually a Microsoft Active Directory, but OpenLDAP is used for simplicity here
 
 # Instructions
-docker run --rm -it --mount type=bind,source=$(pwd)/root,target=/opt --mount type=bind,source=$(pwd)/app,target=/app --name oscp -p 2560:2560 oscp /bin/bash
+docker run --rm -it --mount type=bind,source=$(pwd)/root,target=/opt --mount type=bind,source=$(pwd)/app,target=/app --name ocsp -p 2560:2560 ocsp /bin/bash
 `/opt/create_ca.sh` - creates roots and sub cas 
 `/opt/create_client.sh` - creates an example client cert
 
