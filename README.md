@@ -123,28 +123,37 @@ The OCSP responder (docker-entrypoint.sh) can be configured for any CA by modify
 ## Screenshots
 
 Creating the CAs:
+
 ![alt text](<images/screenshots/Screenshot 2025-01-23 at 7.19.25 AM.png>)
 
 Name:
+
 ![Entering Name for Certificate](<images/screenshots/Screenshot 2025-01-23 at 7.17.05 AM.png>)
 
 EDIPI:
+
 ![EDIPI](<images/screenshots/Screenshot 2025-01-23 at 7.17.10 AM.png>)
 
 Org Category:
+
 ![Org Category](<images/screenshots/Screenshot 2025-01-23 at 7.17.19 AM.png>)
 
 Agency Code:
+
 ![Agency Code](<images/screenshots/Screenshot 2025-01-23 at 7.17.26 AM.png>)
 
 Person/Org Category:
+
 ![Person/Org Category](<images/screenshots/Screenshot 2025-01-23 at 7.17.34 AM.png>)
 
 Cert Lifetime:
+
 ![Cert Lifetime](<images/screenshots/Screenshot 2025-01-23 at 7.17.41 AM.png>)
 
 Selecting the Signing CA:
+
 ![Selecting the Signing CA](<images/screenshots/Screenshot 2025-01-23 at 7.17.48 AM.png>)
 
 Certificate Generated:
+
 ![Certificate Generated](<images/screenshots/Screenshot 2025-01-23 at 7.17.55 AM.png>)
