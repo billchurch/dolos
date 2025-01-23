@@ -17,6 +17,12 @@ CERTSERIAL=""
 FASCN=""
 NATIONALITY=""
 
+# Ensure gum is available
+if ! command -v gum &> /dev/null; then
+    log "gum is not installed"
+    exit 1
+fi
+
 mkdir -p $ROOT/certs $ROOT/crl $ROOT/newcerts $ROOT/private $ROOT/csr
 # Generate random data with spinner and success message
 gum spin --spinner dot --title "Generating random seed..." -- dd if=/dev/urandom of=/app/private/.rand bs=256 count=1 2>/dev/null
