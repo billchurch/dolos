@@ -112,9 +112,10 @@ The `create_ca.sh` script generates a comprehensive PKI structure under `/app`:
 
 ## References
 
-- CAC Next Generation Implementation Guide v2.6
+- [CAC Next Generation Implementation Guide v2.6](https://www.cac.mil/Portals/53/Documents/CAC_NG_Implementation_Guide_v2.6.pdf)
 - DoD PKI Transitional Implementation Guide
 - Various DoD certificate specifications and standards
+- [MilitaryCAC.com](https://militarycac.com)
 - <https://crl.gds.disa.mil/>
 
 ## Notes
