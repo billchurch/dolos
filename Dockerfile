@@ -13,4 +13,16 @@ RUN apk --no-cache add \
     ncurses-terminfo-base \
     ncurses-terminfo
 
+# Create non-root user and set up directories with correct permissions
+RUN addgroup -S appgroup && \
+    adduser -S appuser -G appgroup && \
+    chown -R appuser:appgroup /app && \
+    chmod -R 755 /app
+
+# Set working directory
+WORKDIR /opt
+
+# Switch to non-root user
+USER appuser
+
 EXPOSE 2560
