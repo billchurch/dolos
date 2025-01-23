@@ -1,37 +1,66 @@
-# Infroduction
-Dolos is a collection of containers to support testing a system or service for authenticating with a Common Access Card (CAC) against an infrastructure representative of a typical DoD authentication environment
+# Dolos - DoD PKI Testing Environment
 
-# Components
-## Certificate Authorities
-### DoDRoot3
-Modeled after DoD Root CA 3, RSA 2048 w/ SHA256 which is set to expire in the real-world on Dec 30 18:46:41 2029 GMT
+Dolos provides a containerized environment for testing CAC authentication systems against a simulated DoD PKI infrastructure. It generates a complete certificate chain including root CAs, intermediate CAs, and client certificates that mirror the actual DoD PKI structure.
 
-### DoDRoot4
-Modeled after DoD Root CA 4, ecdsa-with-SHA256 prime256v1, which is set to expire in the real-world on Jul 25 19:48:23 2032 GMT
+## Current Components
 
-### DoDRoot5
-Modeled after DoD Root CA 5, ecdsa-with-SHA384 secp384r1, which is set to expire in the real-world on Jun 14 17:17:27 2041 GMT
+### Root Certificate Authorities
+- **DoDRoot3** - RSA 2048 w/ SHA256 (Expires: Dec 30 2029)
+- **DoDRoot4** - ECDSA w/ SHA256 using prime256v1 (Expires: Jul 25 2032) 
+- **DoDRoot5** - ECDSA w/ SHA384 using secp384r1 (Expires: Jun 14 2041)
 
-## Subordinate CAs
-### DOD ID CA-59
-Modled after DOD ID CA-59 and signed by DoDRoot3 RSA 2048 w/ SHA256, set to expire in the real-world on Apr  2 13:38:32 2025 GMT
+### Intermediate CAs (All signed by DoDRoot3)
+- **DOD ID CA-59** (Expires: Apr 2 2025)
+- **DOD ID CA-62** (Expires: Jun 1 2027)
+- **DOD ID CA-63** (Expires: Apr 6 2027)
+- **DOD ID CA-64** (Expires: Jun 1 2027)
+- **DOD ID CA-65** (Expires: Jun 1 2027)
 
-Several subordinate CAs are created to represent a larger bundle of certificates that would likely need to be loaded on a system
-## CRLDP
-A large CRL is provided in the CRLDP to represent the large CRLs present in the DOD 
-## OCSP Server
-An OCSP server to check for real-time certificate revocation
-## LDAP Server
-An LDAP server to provide authorization data for related certificates. Note this is usually a Microsoft Active Directory, but OpenLDAP is used for simplicity here
+### Services
+- **OCSP Responder** - Running on port 2560, defaults to CA-59 but configurable
+- **Certificate Generation** - Interactive client certificate creation with customizable parameters
 
-# Instructions
-docker run --rm -it --mount type=bind,source=$(pwd)/root,target=/opt --mount type=bind,source=$(pwd)/app,target=/app --name ocsp -p 2560:2560 ocsp /bin/bash
-`/opt/create_ca.sh` - creates roots and sub cas 
-`/opt/create_client.sh` - creates an example client cert
+## Directory Structure
+The `create_ca.sh` script generates a comprehensive PKI structure under `/app`:
+- Individual CA directories (CA-59 through CA-65)
+- Root certificates in `/app/certs`
+- CRLs in `/app/crl`
+- Private keys in `/app/private`
+- OCSP certificates and keys for each CA
 
-# To Do 
-- Generate client cert with parameters for subject, edipi, and a valid fascn using `fascn_decode.sh` as an example
+## Usage
 
-# Notes
-https://www.cac.mil/Portals/53/Documents/CAC_NG_Implementation_Guide_v2.6.pdf
-https://devblogs.microsoft.com/scripting/building-a-demo-active-directory-part-1/
+1. Start the container:
+```bash
+docker run --rm -it \
+  --mount type=bind,source=$(pwd)/root,target=/opt \
+  --mount type=bind,source=$(pwd)/app,target=/app \
+  --name ocsp -p 2560:2560 ocsp /bin/bash
+```
+
+2. Generate PKI infrastructure:
+```
+/opt/create_ca.sh
+```
+
+3. Create client certificates:
+```
+/opt/create_client.sh
+```
+
+## Planned Features
+- LDAP/Active Directory integration for certificate authorization
+- CRL Distribution Point (CRLDP) implementation
+- Web interface for certificate management
+- Automated testing tools for CAC authentication
+- Support for additional DoD certificate profiles
+- Docker Compose setup for multi-service deployment
+
+## References
+- CAC Next Generation Implementation Guide v2.6
+- DoD PKI Transitional Implementation Guide
+- Various DoD certificate specifications and standards
+
+## Notes
+The OCSP responder (docker-entrypoint.sh) can be configured for any CA by modifying the CA variable. Default configuration watches CA-59's index.txt for changes and provides real-time certificate status responses. Currently the Dockerfile has this option commented out.
+
